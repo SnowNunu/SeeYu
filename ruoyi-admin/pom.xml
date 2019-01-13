@@ -45,6 +45,13 @@
             <artifactId>ruoyi-framework</artifactId>
             <version>${ruoyi.version}</version>
         </dependency>
+
+        <!-- 交友app模块 -->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-application</artifactId>
+            <version>${ruoyi.version}</version>
+        </dependency>
         
     </dependencies>
 

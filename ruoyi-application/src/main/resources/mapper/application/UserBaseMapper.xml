@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.application.mapper.UserBaseMapper">
+    
+    <resultMap type="UserBase" id="UserBaseResult">
+        <result property="userId"    column="user_id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="userPassword"    column="user_password"    />
+        <result property="userAge"    column="user_age"    />
+        <result property="userGender"    column="user_gender"    />
+        <result property="userProfession"    column="user_profession"    />
+        <result property="userIncome"    column="user_income"    />
+        <result property="userHeight"    column="user_height"    />
+        <result property="userMarry"    column="user_marry"    />
+        <result property="userSpecialty"    column="user_specialty"    />
+        <result property="userLevel"    column="user_level"    />
+        <result property="userQq"    column="user_qq"    />
+        <result property="userWechat"    column="user_wechat"    />
+        <result property="userAddress"    column="user_address"    />
+        <result property="userSignature"    column="user_signature"    />
+        <result property="userCoin"    column="user_coin"    />
+        <result property="userDiamond"    column="user_diamond"    />
+        <result property="userHappinessValue"    column="user_happiness_value"    />
+        <result property="userRegisterTime"    column="user_register_time"    />
+        <result property="userRegisterIp"    column="user_register_ip"    />
+        <result property="userChannelid"    column="user_channelid"    />
+        <result property="userVipStatus"    column="user_vip_status"    />
+        <result property="userVipExpiresAt"    column="user_vip_expires_at"    />
+        <result property="userHeadImg"    column="user_head_img"    />
+        <result property="userToken"    column="user_token"    />
+        <result property="userEdu"    column="user_edu"    />
+        <result property="userBirthday"    column="user_birthday"    />
+        <result property="userWeight"    column="user_weight"    />
+        <result property="userConstellation"    column="user_constellation"    />
+    </resultMap>
+	
+	<sql id="selectUserBaseVo">
+        select user_id, user_name, user_password, user_age, user_gender, user_profession, user_income, user_height, user_marry, user_specialty, user_level, user_qq, user_wechat, user_address, user_signature, user_coin, user_diamond, user_happiness_value, user_register_time, user_register_ip, user_channelid, user_vip_status, user_vip_expires_at, user_head_img, user_token, user_edu, user_birthday, user_weight, user_constellation from app_user_base
+    </sql>
+	
+    <select id="selectUserBaseList" parameterType="UserBase" resultMap="UserBaseResult">
+        <include refid="selectUserBaseVo"/>
+        <where>  
+            <if test="userId != null "> and user_id = #{userId}</if>
+             <if test="userName != null  and userName != '' "> and user_name = #{userName}</if>
+             <if test="userPassword != null  and userPassword != '' "> and user_password = #{userPassword}</if>
+             <if test="userAge != null  and userAge != '' "> and user_age = #{userAge}</if>
+             <if test="userGender != null  and userGender != '' "> and user_gender = #{userGender}</if>
+             <if test="userProfession != null  and userProfession != '' "> and user_profession = #{userProfession}</if>
+             <if test="userIncome != null  and userIncome != '' "> and user_income = #{userIncome}</if>
+             <if test="userHeight != null  and userHeight != '' "> and user_height = #{userHeight}</if>
+             <if test="userMarry != null  and userMarry != '' "> and user_marry = #{userMarry}</if>
+             <if test="userSpecialty != null  and userSpecialty != '' "> and user_specialty = #{userSpecialty}</if>
+             <if test="userLevel != null "> and user_level = #{userLevel}</if>
+             <if test="userQq != null  and userQq != '' "> and user_qq = #{userQq}</if>
+             <if test="userWechat != null  and userWechat != '' "> and user_wechat = #{userWechat}</if>
+             <if test="userAddress != null  and userAddress != '' "> and user_address = #{userAddress}</if>
+             <if test="userSignature != null  and userSignature != '' "> and user_signature = #{userSignature}</if>
+             <if test="userCoin != null "> and user_coin = #{userCoin}</if>
+             <if test="userDiamond != null "> and user_diamond = #{userDiamond}</if>
+             <if test="userHappinessValue != null "> and user_happiness_value = #{userHappinessValue}</if>
+             <if test="userRegisterTime != null "> and user_register_time = #{userRegisterTime}</if>
+             <if test="userRegisterIp != null  and userRegisterIp != '' "> and user_register_ip = #{userRegisterIp}</if>
+             <if test="userChannelid != null  and userChannelid != '' "> and user_channelid = #{userChannelid}</if>
+             <if test="userVipStatus != null "> and user_vip_status = #{userVipStatus}</if>
+             <if test="userVipExpiresAt != null "> and user_vip_expires_at = #{userVipExpiresAt}</if>
+             <if test="userHeadImg != null  and userHeadImg != '' "> and user_head_img = #{userHeadImg}</if>
+             <if test="userToken != null  and userToken != '' "> and user_token = #{userToken}</if>
+             <if test="userEdu != null  and userEdu != '' "> and user_edu = #{userEdu}</if>
+             <if test="userBirthday != null  and userBirthday != '' "> and user_birthday = #{userBirthday}</if>
+             <if test="userWeight != null  and userWeight != '' "> and user_weight = #{userWeight}</if>
+             <if test="userConstellation != null  and userConstellation != '' "> and user_constellation = #{userConstellation}</if>
+         </where>
+    </select>
+    
+    <select id="selectUserBaseById" parameterType="Integer" resultMap="UserBaseResult">
+        <include refid="selectUserBaseVo"/>
+        where user_id = #{userId}
+    </select>
+        
+    <insert id="insertUserBase" parameterType="UserBase" useGeneratedKeys="true" keyProperty="userId">
+        insert into app_user_base
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null  ">user_id,</if>
+			<if test="userName != null  and userName != ''  ">user_name,</if>
+			<if test="userPassword != null  and userPassword != ''  ">user_password,</if>
+			<if test="userAge != null  and userAge != ''  ">user_age,</if>
+			<if test="userGender != null  and userGender != ''  ">user_gender,</if>
+			<if test="userProfession != null  and userProfession != ''  ">user_profession,</if>
+			<if test="userIncome != null  and userIncome != ''  ">user_income,</if>
+			<if test="userHeight != null  and userHeight != ''  ">user_height,</if>
+			<if test="userMarry != null  and userMarry != ''  ">user_marry,</if>
+			<if test="userSpecialty != null  and userSpecialty != ''  ">user_specialty,</if>
+			<if test="userLevel != null  ">user_level,</if>
+			<if test="userQq != null  and userQq != ''  ">user_qq,</if>
+			<if test="userWechat != null  and userWechat != ''  ">user_wechat,</if>
+			<if test="userAddress != null  and userAddress != ''  ">user_address,</if>
+			<if test="userSignature != null  and userSignature != ''  ">user_signature,</if>
+			<if test="userCoin != null  ">user_coin,</if>
+			<if test="userDiamond != null  ">user_diamond,</if>
+			<if test="userHappinessValue != null  ">user_happiness_value,</if>
+			<if test="userRegisterTime != null  ">user_register_time,</if>
+			<if test="userRegisterIp != null  and userRegisterIp != ''  ">user_register_ip,</if>
+			<if test="userChannelid != null  and userChannelid != ''  ">user_channelid,</if>
+			<if test="userVipStatus != null  ">user_vip_status,</if>
+			<if test="userVipExpiresAt != null  ">user_vip_expires_at,</if>
+			<if test="userHeadImg != null  and userHeadImg != ''  ">user_head_img,</if>
+			<if test="userToken != null  and userToken != ''  ">user_token,</if>
+			<if test="userEdu != null  and userEdu != ''  ">user_edu,</if>
+			<if test="userBirthday != null  and userBirthday != ''  ">user_birthday,</if>
+			<if test="userWeight != null  and userWeight != ''  ">user_weight,</if>
+			<if test="userConstellation != null  and userConstellation != ''  ">user_constellation,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null  ">#{userId},</if>
+			<if test="userName != null  and userName != ''  ">#{userName},</if>
+			<if test="userPassword != null  and userPassword != ''  ">#{userPassword},</if>
+			<if test="userAge != null  and userAge != ''  ">#{userAge},</if>
+			<if test="userGender != null  and userGender != ''  ">#{userGender},</if>
+			<if test="userProfession != null  and userProfession != ''  ">#{userProfession},</if>
+			<if test="userIncome != null  and userIncome != ''  ">#{userIncome},</if>
+			<if test="userHeight != null  and userHeight != ''  ">#{userHeight},</if>
+			<if test="userMarry != null  and userMarry != ''  ">#{userMarry},</if>
+			<if test="userSpecialty != null  and userSpecialty != ''  ">#{userSpecialty},</if>
+			<if test="userLevel != null  ">#{userLevel},</if>
+			<if test="userQq != null  and userQq != ''  ">#{userQq},</if>
+			<if test="userWechat != null  and userWechat != ''  ">#{userWechat},</if>
+			<if test="userAddress != null  and userAddress != ''  ">#{userAddress},</if>
+			<if test="userSignature != null  and userSignature != ''  ">#{userSignature},</if>
+			<if test="userCoin != null  ">#{userCoin},</if>
+			<if test="userDiamond != null  ">#{userDiamond},</if>
+			<if test="userHappinessValue != null  ">#{userHappinessValue},</if>
+			<if test="userRegisterTime != null  ">#{userRegisterTime},</if>
+			<if test="userRegisterIp != null  and userRegisterIp != ''  ">#{userRegisterIp},</if>
+			<if test="userChannelid != null  and userChannelid != ''  ">#{userChannelid},</if>
+			<if test="userVipStatus != null  ">#{userVipStatus},</if>
+			<if test="userVipExpiresAt != null  ">#{userVipExpiresAt},</if>
+			<if test="userHeadImg != null  and userHeadImg != ''  ">#{userHeadImg},</if>
+			<if test="userToken != null  and userToken != ''  ">#{userToken},</if>
+			<if test="userEdu != null  and userEdu != ''  ">#{userEdu},</if>
+			<if test="userBirthday != null  and userBirthday != ''  ">#{userBirthday},</if>
+			<if test="userWeight != null  and userWeight != ''  ">#{userWeight},</if>
+			<if test="userConstellation != null  and userConstellation != ''  ">#{userConstellation},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateUserBase" parameterType="UserBase">
+        update app_user_base
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userName != null  and userName != ''  ">user_name = #{userName},</if>
+            <if test="userPassword != null  and userPassword != ''  ">user_password = #{userPassword},</if>
+            <if test="userAge != null  and userAge != ''  ">user_age = #{userAge},</if>
+            <if test="userGender != null  and userGender != ''  ">user_gender = #{userGender},</if>
+            <if test="userProfession != null  and userProfession != ''  ">user_profession = #{userProfession},</if>
+            <if test="userIncome != null  and userIncome != ''  ">user_income = #{userIncome},</if>
+            <if test="userHeight != null  and userHeight != ''  ">user_height = #{userHeight},</if>
+            <if test="userMarry != null  and userMarry != ''  ">user_marry = #{userMarry},</if>
+            <if test="userSpecialty != null  and userSpecialty != ''  ">user_specialty = #{userSpecialty},</if>
+            <if test="userLevel != null  ">user_level = #{userLevel},</if>
+            <if test="userQq != null  and userQq != ''  ">user_qq = #{userQq},</if>
+            <if test="userWechat != null  and userWechat != ''  ">user_wechat = #{userWechat},</if>
+            <if test="userAddress != null  and userAddress != ''  ">user_address = #{userAddress},</if>
+            <if test="userSignature != null  and userSignature != ''  ">user_signature = #{userSignature},</if>
+            <if test="userCoin != null  ">user_coin = #{userCoin},</if>
+            <if test="userDiamond != null  ">user_diamond = #{userDiamond},</if>
+            <if test="userHappinessValue != null  ">user_happiness_value = #{userHappinessValue},</if>
+            <if test="userRegisterTime != null  ">user_register_time = #{userRegisterTime},</if>
+            <if test="userRegisterIp != null  and userRegisterIp != ''  ">user_register_ip = #{userRegisterIp},</if>
+            <if test="userChannelid != null  and userChannelid != ''  ">user_channelid = #{userChannelid},</if>
+            <if test="userVipStatus != null  ">user_vip_status = #{userVipStatus},</if>
+            <if test="userVipExpiresAt != null  ">user_vip_expires_at = #{userVipExpiresAt},</if>
+            <if test="userHeadImg != null  and userHeadImg != ''  ">user_head_img = #{userHeadImg},</if>
+            <if test="userToken != null  and userToken != ''  ">user_token = #{userToken},</if>
+            <if test="userEdu != null  and userEdu != ''  ">user_edu = #{userEdu},</if>
+            <if test="userBirthday != null  and userBirthday != ''  ">user_birthday = #{userBirthday},</if>
+            <if test="userWeight != null  and userWeight != ''  ">user_weight = #{userWeight},</if>
+            <if test="userConstellation != null  and userConstellation != ''  ">user_constellation = #{userConstellation},</if>
+        </trim>
+        where user_id = #{userId}
+    </update>
+
+	<delete id="deleteUserBaseById" parameterType="Integer">
+        delete from app_user_base where user_id = #{userId}
+    </delete>
+	
+    <delete id="deleteUserBaseByIds" parameterType="String">
+        delete from app_user_base where user_id in 
+        <foreach item="userId" collection="array" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </delete>
+    
+</mapper>
